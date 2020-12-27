@@ -1,0 +1,13 @@
+{
+    "name": "Draw",
+    "alias": "draw",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Draw\\Providers\\DrawServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

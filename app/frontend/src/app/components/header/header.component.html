@@ -1,0 +1,15 @@
+<div class="container-fluid bg-dark py-2 mb-4">
+  <div class="row">
+    <div class="col-md-1">
+      Logo
+    </div>
+    <div class="offset-10 col-md-1">
+      <div>
+        {{user?.login}}
+      </div>
+      <div *ngIf="user">
+        {{user?.chips}} баллов
+      </div>
+    </div>
+  </div>
+</div>

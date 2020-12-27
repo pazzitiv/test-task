@@ -1,0 +1,2 @@
+#!/bin/bash
+pg_dump -U pragauser --dbname=praga --file=/backup/praga-$(date +%Y-%m-%d-%H-%M).sql

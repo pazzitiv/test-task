@@ -1,0 +1,3 @@
+#!/bin/bash
+echo Backup from /backup/$0
+psql praga < /backup/$0

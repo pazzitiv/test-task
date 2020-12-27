@@ -1,0 +1,70 @@
+version: "3.4"
+
+services:
+  frontend:
+    container_name: 'praga_frontend'
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    restart: always
+    volumes:
+      - app-frontend:/app/frontend
+    networks:
+      frontend:
+      backend:
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+      - backend
+    links:
+      - backend
+    environment:
+      - TZ=Europe/Moscow
+
+  backend:
+    container_name: 'praga_backend'
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      network: bridge
+    restart: always
+    volumes:
+      - app-backend:/app/backend
+    networks:
+      frontend:
+      backend:
+    environment:
+      - TZ=Europe/Moscow
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: 'praga_db'
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    restart: always
+    environment:
+      - POSTGRES_DB=praga
+      - POSTGRES_USER=pragauser
+      - POSTGRES_PASSWORD=praga
+      - TZ=Europe/Moscow
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
+    networks:
+      backend:
+
+networks:
+  frontend:
+  backend:
+
+
+volumes:
+  app-frontend:
+  app-backend:
+  db-data:

@@ -1,0 +1,19 @@
+image: ubuntu:18.04
+
+stages:
+  - deploy
+  - build
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - ssh -oStrictHostKeyChecking=no $APP_SERVER "cd /home/gitlab-runner/projects/$CI_PROJECT_NAME && git checkout master && git pull origin master"
+
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - ssh -oStrictHostKeyChecking=no $APP_SERVER "cd /home/gitlab-runner/projects/$CI_PROJECT_NAME && docker-compose down && docker volume prune --force && docker-compose up -d --build"

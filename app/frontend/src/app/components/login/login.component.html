@@ -1,0 +1,21 @@
+<div class="container">
+  <ng-form>
+    <div class="row form">
+      <div class="offset-4 col-md-4 text-center">
+        <div class="form-floating mb-3">
+          <input name="login" type="login" class="form-control" id="floatingInput" [(ngModel)]="login" placeholder="name@example.com" [value]="login">
+          <label for="floatingInput">Login</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="password" type="password" class="form-control" id="floatingPassword" [(ngModel)]="password" placeholder="Password" [value]="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-lg btn-dark" (click)="authorize()">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-form>
+</div>

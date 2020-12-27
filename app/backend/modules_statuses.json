@@ -1,0 +1,6 @@
+{
+    "Auth": true,
+    "User": true,
+    "Prize": true,
+    "Draw": true
+}
